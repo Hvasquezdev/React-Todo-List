@@ -7,6 +7,7 @@ import { TodoList } from "./components/TodoList";
 import { TodoItem } from "./components/TodoItem";
 import { Modal } from './components/Modal';
 import { TodoForm } from './components/TodoForm';
+import { TodoHeader } from "./components/TodoHeader";
 
 function AppUI() {
   const {
@@ -16,14 +17,26 @@ function AppUI() {
     updateTodoItem,
     removeTodoItem,
     showModal,
-    setShowModal
+    setShowModal,
+    totalTodoItems,
+    completedTodoItemsCount,
+    searchValue,
+    setSearchValue
   } = React.useContext(TodoContext);
 
   return (
     <React.Fragment>
-      <TodoCounter />
+      <TodoHeader>
+        <TodoCounter
+          totalItems={totalTodoItems}
+          completedItems={completedTodoItemsCount}
+        />
 
-      <TodoSearch />
+        <TodoSearch
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+      </TodoHeader>
 
       <TodoList>
         {error && <p>Hubo un error al traer la lista de tareas....</p>}
