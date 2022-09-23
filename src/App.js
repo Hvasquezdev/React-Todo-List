@@ -42,20 +42,22 @@ function App() {
         />
       </TodoHeader>
 
-      <TodoList>
-        {error && <p>Hubo un error al traer la lista de tareas....</p>}
-        {loading && <p>Cargando lista de tareas, espera un poco...</p>}
-        {(!loading && !error && !todoList.length) && <p>No has creado ninguna tarea...</p>}
-
-        {(!loading && !error) && todoList.map((todo) => (
+      <TodoList
+        error={error}
+        loading={loading}
+        todos={todoList}
+        onError={() => <p>Hubo un error al traer la lista de tareas....</p>}
+        onLoading={() => <p>Cargando lista de tareas, espera un poco...</p>}
+        onEmptyList={() => <p>No has creado ninguna tarea...</p>}
+        onRender={(todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
             updateTodo={updateTodoItem}
             deleteTodo={removeTodoItem}
           />
-        ))}
-      </TodoList>
+        )}
+      />
 
       {showModal && (
         <Modal>
