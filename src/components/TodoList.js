@@ -8,11 +8,19 @@ function TodoList(props) {
       {props.loading && props.onLoading()}
 
       {
-        (!props.loading && !props.error && !props.todos.length) && props.onEmptyList()
+        (
+          !props.loading &&
+          !props.error &&
+          !props.totalTodos
+        ) && props.onEmptyList()
+      }
+
+      {
+        (!!props.totalTodos && !props.todos.length) && props.onEmptySearch(props.searchQuery)
       }
 
       <ul className="TodoList__List">
-        {(!props.loading && !props.error) && props.todos.map(props.onRender)}
+        {(!props.loading && !props.error) && props.todos.map(props.children || props.onRender)}
       </ul>
     </section>
   );

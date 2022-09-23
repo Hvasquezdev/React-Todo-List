@@ -46,9 +46,12 @@ function App() {
         error={error}
         loading={loading}
         todos={todoList}
+        totalTodos={totalTodoItems}
+        searchQuery={searchValue}
         onError={() => <p>Hubo un error al traer la lista de tareas....</p>}
         onLoading={() => <p>Cargando lista de tareas, espera un poco...</p>}
         onEmptyList={() => <p>No has creado ninguna tarea...</p>}
+        onEmptySearch={(query) => <p>No hay resultado para {query}...</p>}
         onRender={(todo) => (
           <TodoItem
             key={todo.id}
