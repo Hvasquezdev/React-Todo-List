@@ -6,7 +6,8 @@ function useTodos() {
     item: todoList,
     saveItem: setTodoList,
     loading,
-    error
+    error,
+    loadLocalStorageData
   } = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
   const [showModal, setShowModal] = React.useState(false);
@@ -71,7 +72,8 @@ function useTodos() {
     loading: loading,
     error: error,
     showModal,
-    setShowModal
+    setShowModal,
+    loadLocalStorage: loadLocalStorageData
   };
 }
 

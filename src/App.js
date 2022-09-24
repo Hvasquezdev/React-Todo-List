@@ -8,6 +8,7 @@ import { TodoItem } from "./components/TodoItem";
 import { Modal } from './components/Modal';
 import { TodoForm } from './components/TodoForm';
 import { TodoHeader } from "./components/TodoHeader";
+import { ChangeAlertWithStorageListener } from "./components/ChangeAlert";
 
 // Hooks
 import { useTodos } from "./hooks/useTodos";
@@ -25,7 +26,8 @@ function App() {
     totalTodoItems,
     completedTodoItemsCount,
     searchValue,
-    setSearchValue
+    setSearchValue,
+    loadLocalStorage
   } = useTodos();
 
   return (
@@ -69,6 +71,7 @@ function App() {
       )}
 
       <TodoCreateButton setShowModal={setShowModal} />
+      <ChangeAlertWithStorageListener loadLocalStorage={loadLocalStorage} />
     </React.Fragment>
   );
 }

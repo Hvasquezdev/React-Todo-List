@@ -5,19 +5,22 @@ function useLocalStorage(itemName, initialValue = '') {
   const [error] = React.useState('');
   const [item, setItem] = React.useState(initialValue);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      const localStorageItem = localStorage.getItem(itemName);
+  const loadLocalStorageData = () => {
+    setLoading(true);
+    const localStorageItem = localStorage.getItem(itemName);
     
-      if (!localStorageItem) {
-        localStorage.setItem(itemName, JSON.stringify(initialValue));
-        setItem(initialValue);
-      } else {
-        setItem(JSON.parse(localStorageItem));
-      }
+    if (!localStorageItem) {
+      localStorage.setItem(itemName, JSON.stringify(initialValue));
+      setItem(initialValue);
+    } else {
+      setItem(JSON.parse(localStorageItem));
+    }
 
-      setLoading(false);
-    }, 1000);
+    setLoading(false);
+  };
+
+  React.useEffect(() => {
+    setTimeout(loadLocalStorageData, 1000);
     // eslint-disable-next-line
   }, []);  
 
@@ -30,7 +33,8 @@ function useLocalStorage(itemName, initialValue = '') {
     item,
     saveItem,
     loading,
-    error
+    error,
+    loadLocalStorageData
   };
 }
 
