@@ -18,7 +18,8 @@ function useLocalStorage(itemName, initialValue = '') {
 
       setLoading(false);
     }, 1000);
-  });  
+    // eslint-disable-next-line
+  }, []);  
 
   const saveItem = (newItem) => {
     localStorage.setItem(itemName, JSON.stringify(newItem));
