@@ -1,10 +1,8 @@
 import React from "react";
 import "./../assets/css/ChangeAlert.css";
-import { withStorageListener } from "./../hocs/withStorageListener";
 
 function ChangeAlert({ hasStorageChanges, setStorageChanges, loadLocalStorage }) {
   const handleUpdate = () => {
-    console.log("asdasd");
     loadLocalStorage();
     setStorageChanges(false);
   }
@@ -30,6 +28,4 @@ function ChangeAlert({ hasStorageChanges, setStorageChanges, loadLocalStorage })
   return null;
 }
 
-const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert);
-
-export { ChangeAlertWithStorageListener };
+export { ChangeAlert };

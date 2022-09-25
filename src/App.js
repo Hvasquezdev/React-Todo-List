@@ -8,10 +8,11 @@ import { TodoItem } from "./components/TodoItem";
 import { Modal } from './components/Modal';
 import { TodoForm } from './components/TodoForm';
 import { TodoHeader } from "./components/TodoHeader";
-import { ChangeAlertWithStorageListener } from "./components/ChangeAlert";
+import { ChangeAlert } from "./components/ChangeAlert";
 
 // Hooks
 import { useTodos } from "./hooks/useTodos";
+import { useStorageListener } from "./hooks/useStorageListener";
 
 function App() {
   const {
@@ -29,6 +30,7 @@ function App() {
     setSearchValue,
     loadLocalStorage
   } = useTodos();
+  const { hasStorageChanges, setStorageChanges } = useStorageListener();
 
   return (
     <React.Fragment>
@@ -71,7 +73,11 @@ function App() {
       )}
 
       <TodoCreateButton setShowModal={setShowModal} />
-      <ChangeAlertWithStorageListener loadLocalStorage={loadLocalStorage} />
+      <ChangeAlert
+        hasStorageChanges={hasStorageChanges}
+        setStorageChanges={setStorageChanges}
+        loadLocalStorage={loadLocalStorage}
+      />
     </React.Fragment>
   );
 }
