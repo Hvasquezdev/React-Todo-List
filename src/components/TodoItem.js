@@ -10,8 +10,13 @@ function TodoItem(props) {
 
     props.updateTodo(todo);
   };
+
   const onDelete = () => {
     props.deleteTodo({ ...props.todo });
+  };
+
+  const onEdit = () => {
+    console.log("editing todo");
   };
 
   return (
@@ -28,7 +33,10 @@ function TodoItem(props) {
       >
         {props.todo.text}
       </p>
-      <TodoIcon type="delete" onClick={onDelete} />
+      <div className="TodoItem-actions">
+        <TodoIcon type="edit" onClick={onEdit} />
+        <TodoIcon type="delete" onClick={onDelete} />
+      </div>
     </li>
   );
 }

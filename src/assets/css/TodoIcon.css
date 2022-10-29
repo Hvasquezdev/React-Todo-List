@@ -16,7 +16,7 @@
   fill: #4caf50;
 }
 .Icon-container:hover .Icon-svg--edit {
-  fill: #61dafa;
+  fill: #ffa500;
 }
 .Icon-container:hover .Icon-svg--delete {
   fill: red;
