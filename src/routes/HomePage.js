@@ -1,20 +1,19 @@
-// import './App.css';
 import React from "react";
-import { TodoCounter } from "./components/TodoCounter";
-import { TodoSearch } from "./components/TodoSearch";
-import { TodoCreateButton } from "./components/TodoCreateButton";
-import { TodoList } from "./components/TodoList";
-import { TodoItem } from "./components/TodoItem";
-import { Modal } from './components/Modal';
-import { TodoForm } from './components/TodoForm';
-import { TodoHeader } from "./components/TodoHeader";
-import { ChangeAlert } from "./components/ChangeAlert";
+import { TodoCounter } from "./../components/TodoCounter";
+import { TodoSearch } from "./../components/TodoSearch";
+import { TodoCreateButton } from "./../components/TodoCreateButton";
+import { TodoList } from "./../components/TodoList";
+import { TodoItem } from "./../components/TodoItem";
+import { Modal } from "./../components/Modal";
+import { TodoForm } from "./../components/TodoForm";
+import { TodoHeader } from "./../components/TodoHeader";
+import { ChangeAlert } from "./../components/ChangeAlert";
 
 // Hooks
-import { useTodos } from "./hooks/useTodos";
-import { useStorageListener } from "./hooks/useStorageListener";
+import { useTodos } from "./../hooks/useTodos";
+import { useStorageListener } from "./../hooks/useStorageListener";
 
-function App() {
+function HomePage() {
   const {
     error,
     loading,
@@ -28,7 +27,7 @@ function App() {
     completedTodoItemsCount,
     searchValue,
     setSearchValue,
-    loadLocalStorage
+    loadLocalStorage,
   } = useTodos();
   const { hasStorageChanges, setStorageChanges } = useStorageListener();
 
@@ -40,10 +39,7 @@ function App() {
           completedItems={completedTodoItemsCount}
         />
 
-        <TodoSearch
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
+        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       </TodoHeader>
 
       <TodoList
@@ -82,4 +78,4 @@ function App() {
   );
 }
 
-export default App;
+export { HomePage };
