@@ -4,14 +4,13 @@ import { TodoSearch } from "./../components/TodoSearch";
 import { TodoCreateButton } from "./../components/TodoCreateButton";
 import { TodoList } from "./../components/TodoList";
 import { TodoItem } from "./../components/TodoItem";
-import { Modal } from "./../components/Modal";
-import { TodoForm } from "./../components/TodoForm";
 import { TodoHeader } from "./../components/TodoHeader";
 import { ChangeAlert } from "./../components/ChangeAlert";
 
 // Hooks
 import { useTodos } from "./../hooks/useTodos";
 import { useStorageListener } from "./../hooks/useStorageListener";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const {
@@ -20,9 +19,6 @@ function HomePage() {
     todoList,
     updateTodoItem,
     removeTodoItem,
-    showModal,
-    addTodoItem,
-    setShowModal,
     totalTodoItems,
     completedTodoItemsCount,
     searchValue,
@@ -30,6 +26,7 @@ function HomePage() {
     loadLocalStorage,
   } = useTodos();
   const { hasStorageChanges, setStorageChanges } = useStorageListener();
+  const navigate = useNavigate();
 
   return (
     <React.Fragment>
@@ -62,13 +59,7 @@ function HomePage() {
         )}
       />
 
-      {showModal && (
-        <Modal>
-          <TodoForm addTodoItem={addTodoItem} setShowModal={setShowModal} />
-        </Modal>
-      )}
-
-      <TodoCreateButton setShowModal={setShowModal} />
+      <TodoCreateButton setShowModal={() => navigate("/new")} />
       <ChangeAlert
         hasStorageChanges={hasStorageChanges}
         setStorageChanges={setStorageChanges}

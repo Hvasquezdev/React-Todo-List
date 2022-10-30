@@ -11,7 +11,6 @@ function useTodos() {
     loadLocalStorageData
   } = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
-  const [showModal, setShowModal] = React.useState(false);
 
   const filteredTodoList = todoList.filter((todo) => {
     const value = searchValue.trim().toLowerCase();
@@ -72,8 +71,6 @@ function useTodos() {
     addTodoItem,
     loading: loading,
     error: error,
-    showModal,
-    setShowModal,
     loadLocalStorage: loadLocalStorageData
   };
 }

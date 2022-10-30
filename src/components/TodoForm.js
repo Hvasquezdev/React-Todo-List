@@ -1,11 +1,11 @@
 import React from "react";
 import "../assets/css/TodoForm.css";
 
-function TodoForm({ addTodoItem, setShowModal }) {
+function TodoForm({ addTodoItem, handleClose }) {
   const [todoText, setTodoText] = React.useState("");
 
   const onCancel = () => {
-    setShowModal(false);
+    handleClose(false);
   };
 
   const onSubmit = (e) => {

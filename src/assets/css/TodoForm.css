@@ -1,11 +1,11 @@
 form {
   width: 90%;
-  max-width: 300px;
-  background-color: #fff;
+  max-width: 450px;
   padding: 33px 40px;
   display: flex;
   align-content: center;
   flex-direction: column;
+  margin: 0 auto;
 }
 
 label {
