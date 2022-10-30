@@ -59,6 +59,11 @@ function useTodos() {
     setTodoList(listToUpdate);
   };
 
+  const getTodoItemById = (id) => {
+    const todo = [...todoList].find((todo) => todo.id === id) || {};
+    return todo;
+  }
+
   return {
     todoList: filteredTodoList,
     setTodoList: setTodoList,
@@ -68,6 +73,7 @@ function useTodos() {
     totalTodoItems: totalTodoItems,
     updateTodoItem: updateTodoItem,
     removeTodoItem: removeTodoItem,
+    getTodoItemById,
     addTodoItem,
     loading: loading,
     error: error,
