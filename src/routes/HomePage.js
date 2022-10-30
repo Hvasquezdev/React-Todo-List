@@ -55,6 +55,7 @@ function HomePage() {
             todo={todo}
             updateTodo={updateTodoItem}
             deleteTodo={removeTodoItem}
+            editTodo={(id) => navigate(`/edit/${id}`)}
           />
         )}
       />
