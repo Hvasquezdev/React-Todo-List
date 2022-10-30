@@ -16,7 +16,7 @@ function TodoItem(props) {
   };
 
   const onEdit = () => {
-    console.log("editing todo");
+    props.editTodo(props.todo.id);
   };
 
   return (
