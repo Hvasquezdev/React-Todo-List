@@ -1,4 +1,5 @@
 import React from 'react';
+import { uid } from '../utils';
 import { useLocalStorage } from './../hooks/useLocalStorage';
 
 function useTodos() {
@@ -36,7 +37,7 @@ function useTodos() {
     const listToUpdate = [...todoList];
     listToUpdate.push({
       completed: false,
-      id: todoList.length,
+      id: uid(),
       text
     });
     
