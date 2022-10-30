@@ -7,9 +7,23 @@ function CreateTodoPage() {
   const { addTodoItem } = useTodos();
   const navigate = useNavigate();
 
+  const navigateToHome = () => {
+    navigate("/");
+  }
+
+  const handleSubmitTodo = (val) => {
+    addTodoItem(val);
+    navigateToHome(); 
+  }
+
   return (
     <div className="createTodoPage">
-      <TodoForm addTodoItem={addTodoItem} handleClose={() => navigate("/")} />
+      <TodoForm
+        formLabel="Escribe tu nuevo TODO"
+        submitLabel="Crear"
+        submitTodo={handleSubmitTodo}
+        handleClose={navigateToHome}
+      />
     </div>
   );
 }
