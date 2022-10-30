@@ -59,7 +59,7 @@ function HomePage() {
         )}
       />
 
-      <TodoCreateButton setShowModal={() => navigate("/new")} />
+      <TodoCreateButton onClick={() => navigate("/new")} />
       <ChangeAlert
         hasStorageChanges={hasStorageChanges}
         setStorageChanges={setStorageChanges}

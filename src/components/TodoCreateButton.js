@@ -1,13 +1,9 @@
 import React from "react";
 import "./../assets/css/TodoCreateButton.css";
 
-function TodoCreateButton({ setShowModal }) {
-  const onClickButton = () => {
-    setShowModal((prevState) => !prevState);
-  };
-
+function TodoCreateButton(props) {
   return (
-    <button className="TodoCreateButton" onClick={onClickButton}>
+    <button className="TodoCreateButton" onClick={props.onClick}>
       <span className="TodoCreateButton-icon">+</span>
     </button>
   );
