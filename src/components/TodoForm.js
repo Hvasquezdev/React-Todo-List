@@ -1,7 +1,13 @@
 import React from "react";
 import "../assets/css/TodoForm.css";
 
-function TodoForm({ addTodoItem, handleClose }) {
+function TodoForm({
+  submitTodo,
+  handleClose,
+  formLabel,
+  submitLabel,
+  defaultValue,
+}) {
   const [todoText, setTodoText] = React.useState("");
 
   const onCancel = () => {
@@ -10,13 +16,16 @@ function TodoForm({ addTodoItem, handleClose }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addTodoItem(todoText);
-    onCancel();
+    submitTodo(todoText);
   };
+
+  React.useEffect(() => {
+    if (defaultValue) setTodoText(defaultValue);
+  }, [defaultValue]);
 
   return (
     <form onSubmit={onSubmit}>
-      <label>Escribe tu nuevo To Do</label>
+      <label>{formLabel}</label>
       <textarea
         placeholder="Cortar la cebolla para el almuerzo"
         onChange={(e) => setTodoText(e.target.value)}
@@ -31,7 +40,7 @@ function TodoForm({ addTodoItem, handleClose }) {
           Cancelar
         </button>
         <button type="submit" className="TodoForm-button TodoForm-button-add">
-          Agregar
+          {submitLabel}
         </button>
       </div>
     </form>
