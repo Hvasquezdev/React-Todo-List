@@ -4,7 +4,7 @@ import { TodoForm } from "../components/TodoForm";
 import { useTodos } from "../hooks/useTodos";
 
 function EditTodoPage() {
-  const { getTodoItemById, loading } = useTodos();
+  const { getTodoItemById, loading, updateTodoItem } = useTodos();
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -19,7 +19,17 @@ function EditTodoPage() {
 
   const navigateToHome = () => {
     navigate("/");
-  }
+  };
+
+  const handleUpdateTodo = (newText) => {
+    updateTodoItem({
+      ...todo,
+      text: newText,
+    });
+    navigateToHome();
+  };
+
+  if (loading) return <p>Cargando...</p>
 
   return (
     <div className="editTodoPage">
@@ -27,7 +37,7 @@ function EditTodoPage() {
         formLabel="Edita el TODO seleccionado"
         submitLabel="Guardar cambios"
         defaultValue={todo?.text}
-        submitTodo={(val) => console.log("Editar todo", val)}
+        submitTodo={handleUpdateTodo}
         handleClose={navigateToHome}
       />
     </div>
